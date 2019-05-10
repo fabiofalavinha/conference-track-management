@@ -1,9 +1,14 @@
 package com.thoughtworks.codeassignment.conference.conferencetrackmanagement.model;
 
-public final class Talk {
+import org.joda.time.DateTime;
+
+public class Talk {
 
     private final String name;
     private final int length; // in minutes
+
+    private DateTime startTime;
+    private DateTime endTime;
 
     public Talk(String name, int length) {
         if (name == null || name.trim().isEmpty()) {
@@ -29,4 +34,27 @@ public final class Talk {
         return String.format("%s %d", name, length);
     }
 
+    public String getLengthText() {
+        return String.format("%dmin", getLength());
+    }
+
+    public void setStartTime(DateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(DateTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public DateTime getStartTime() {
+        return startTime;
+    }
+
+    public DateTime getEndTime() {
+        return endTime;
+    }
+
+    public String getStartTimeText() {
+        return getStartTime().toString("HH:mma");
+    }
 }
