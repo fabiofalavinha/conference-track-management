@@ -4,6 +4,9 @@ import org.joda.time.DateTime;
 
 public class Talk {
 
+    public static final String LIGHTNING = "lightning";
+    private static final int  LIGHTNING_LENGTH = 5;
+
     private final String name;
     private final int length; // in minutes
 
@@ -35,7 +38,7 @@ public class Talk {
     }
 
     public String getLengthText() {
-        return length == 5 ? "lightning" : String.format("%dmin", length);
+        return length == LIGHTNING_LENGTH ? LIGHTNING : String.format("%dmin", length);
     }
 
     public void setStartTime(DateTime startTime) {
