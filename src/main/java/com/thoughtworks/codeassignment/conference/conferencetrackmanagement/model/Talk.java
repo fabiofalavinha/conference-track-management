@@ -35,7 +35,7 @@ public class Talk {
     }
 
     public String getLengthText() {
-        return String.format("%dmin", getLength());
+        return length == 5 ? "lightning" : String.format("%dmin", length);
     }
 
     public void setStartTime(DateTime startTime) {

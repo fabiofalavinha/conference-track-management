@@ -6,6 +6,8 @@ import java.util.Optional;
 
 class TalkParser implements ConferenceParser<Talk> {
 
+    private static final String LIGHTNING_TALK_LENGTH = "lightning";
+
     @Override
     public Optional<Talk> parse(String text) {
         int lastSpace = text.lastIndexOf(" ");
@@ -25,6 +27,9 @@ class TalkParser implements ConferenceParser<Talk> {
     }
 
     private Optional<Integer> parseTalkLengthMinutes(String talkLength) {
+        if (LIGHTNING_TALK_LENGTH.equals(talkLength.trim())) {
+            talkLength = "5min";
+        }
         final StringBuilder builder = new StringBuilder();
         for (char c : talkLength.toCharArray()) {
             if (Character.isDigit(c)) {
